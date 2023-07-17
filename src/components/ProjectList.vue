@@ -21,7 +21,7 @@ export default {
             page: this.page,
           },
         })
-        .then((response) => (this.arrProjects = response.data));
+        .then((response) => (this.arrProjects = response.data.data));
     },
   },
   created() {
@@ -31,10 +31,11 @@ export default {
 </script>
 
 <template>
-  <div v-for="project in arrProjects" :key="project.id">
-    {{ project.title }}
+  <div class="container">
+    <div v-for="project in arrProjects" :key="project.id">
+      {{ project.title }}
+    </div>
   </div>
-  <div></div>
 </template>
 
 <style lang="scss" scoped></style>
