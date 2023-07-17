@@ -1,14 +1,17 @@
 <script>
 import axios from "axios";
+import { store } from "../store";
 export default {
+  components: {},
   data() {
     return {
       arrProjects: [],
       page: 1, // eventuale parametro
+      store,
     };
   },
 
-  mounted: {
+  methods: {
     getProjects() {
       axios
         // oppure link di api esterne
