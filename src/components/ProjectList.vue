@@ -34,7 +34,7 @@ export default {
         .then((response) => {
           console.log(response.data.results);
           this.arrProjects = response.data.results.data;
-          this.nPages = response.data.last_page;
+          this.nPages = response.data.results.last_page;
         });
     },
   },
