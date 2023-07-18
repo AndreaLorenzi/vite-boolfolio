@@ -1,7 +1,14 @@
-<template></template>
+<template>
+  <ProjectList />
+</template>
 
 <script>
-export default {};
+import ProjectList from "../components/ProjectList.vue";
+export default {
+  components: {
+    ProjectList,
+  },
+};
 </script>
 
 <style></style>

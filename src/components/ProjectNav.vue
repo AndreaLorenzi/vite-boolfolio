@@ -19,11 +19,15 @@ export default {};
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"></li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Posts</a>
+            <router-link
+              :to="{ name: 'projects' }"
+              class="nav-link active"
+              aria-current="page"
+            >
+              Projects
+            </router-link>
           </li>
         </ul>
         <!-- <form class="d-flex" role="search">

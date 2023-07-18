@@ -1,40 +1,87 @@
 <script>
 import axios from "axios";
 import { store } from "../store";
+import ProjectCard from "./ProjectCard.vue";
 export default {
-  components: {},
+  components: {
+    ProjectCard,
+  },
   data() {
     return {
       arrProjects: [],
-      page: 1, // eventuale parametro
+      currentPage: 1,
+      nPages: 0,
+      activePage: 1, // eventuale parametro
       store,
     };
   },
 
   methods: {
+    toPrevPage() {
+      this.currentPage != 1 ? this.currentPage-- : null;
+    },
+    toNextPage() {
+      this.currentPage != this.nPages ? this.currentPage++ : null;
+    },
     getProjects() {
       axios
         // oppure link di api esterne
-        .get("http://localhost:8000/api/projects", {
-          // eventuali parametri
+        .get(this.store.baseUrl + "api/projects", {
           params: {
-            page: this.page,
+            page: this.currentPage,
           },
         })
-        .then((response) => (this.arrProjects = response.data.data));
+        .then((response) => {
+          this.arrProjects = response.data.data;
+          this.nPages = response.data.last_page;
+        });
     },
   },
   created() {
     this.getProjects();
   },
+  watch: {
+    currentPage() {
+      this.getProjects();
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="container">
-    <div v-for="project in arrProjects" :key="project.id">
-      {{ project.title }}
+  <main>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        <div class="col" v-for="project in arrProjects" :key="project.id">
+          <ProjectCard :objProject="project" />
+        </div>
+      </div>
     </div>
+  </main>
+
+  <div class="container mt-2">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item" :class="{ disabled: currentPage == 1 }">
+          <a class="page-link" @click="toPrevPage">Previous</a>
+        </li>
+
+        <li
+          v-for="page in nPages"
+          :key="page"
+          class="page-item"
+          :class="{ active: page == currentPage }"
+        >
+          <a class="page-link" href="#" @click="currentPage = page">
+            {{ page }}
+          </a>
+        </li>
+
+        <li class="page-item" :class="{ disabled: currentPage == nPages }">
+          <a class="page-link" href="#" @click="toNextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
