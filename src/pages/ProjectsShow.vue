@@ -2,12 +2,14 @@
 import axios from "axios";
 import { store } from "../store";
 import { router } from "../router";
+import { DateTime } from "luxon";
 
 export default {
   data() {
     return {
       store,
       singleProject: {},
+      DateTime,
     };
   },
   created() {
@@ -24,7 +26,8 @@ export default {
 </script>
 
 <template>
-  <h2>{{ singleProject.title }}</h2>
+  <h1>{{ singleProject.title }}</h1>
+  <h2>Last Modified: {{ this.DateTime.now().toFormat("dd-MM-yyyy") }}</h2>
   <div class="card h-100">
     <img
       class="card-img-top h-100"
