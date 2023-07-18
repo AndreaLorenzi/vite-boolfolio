@@ -5,7 +5,9 @@ export default {};
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Boolpress</a>
+      <router-link :to="{ name: 'home' }" class="navbar-brand"
+        >Home</router-link
+      >
       <button
         class="navbar-toggler"
         type="button"
