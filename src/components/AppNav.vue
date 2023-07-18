@@ -8,6 +8,9 @@ export default {};
       <router-link :to="{ name: 'home' }" class="navbar-brand"
         >Home</router-link
       >
+      <router-link :to="{ name: 'about' }" class="navbar-brand"
+        >About</router-link
+      >
       <button
         class="navbar-toggler"
         type="button"
