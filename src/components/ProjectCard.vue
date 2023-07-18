@@ -60,11 +60,11 @@ export default {
       <a :href="objProject.link_github" class="card-link mx-1 btn btn-warning"
         >Link Github</a
       >
-      <!-- <router-link
+      <router-link
         :to="{ name: 'projects.show', params: { slug: objProject.slug } }"
         class="btn btn-primary"
         >View</router-link
-      > -->
+      >
     </div>
   </div>
 </template>

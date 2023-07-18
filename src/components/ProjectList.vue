@@ -32,7 +32,8 @@ export default {
           },
         })
         .then((response) => {
-          this.arrProjects = response.data.data;
+          console.log(response.data.results);
+          this.arrProjects = response.data.results.data;
           this.nPages = response.data.last_page;
         });
     },
