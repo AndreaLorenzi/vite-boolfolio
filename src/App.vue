@@ -1,16 +1,18 @@
 <script>
-import ProjectNav from "./components/ProjectNav.vue";
-
+import AppNav from "./components/AppNav.vue";
+import AppFooter from "./components/AppFooter.vue";
 export default {
   components: {
-    ProjectNav,
+    AppNav,
+    AppFooter,
   },
 };
 </script>
 
 <template>
-  <ProjectNav />
+  <AppNav />
   <router-view></router-view>
+  <AppFooter />
 </template>
 
 <style lang="scss">
