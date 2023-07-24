@@ -9,7 +9,7 @@ export default {};
         >Home</router-link
       >
       <router-link :to="{ name: 'about' }" class="navbar-brand"
-        >About</router-link
+        >About me</router-link
       >
       <button
         class="navbar-toggler"
